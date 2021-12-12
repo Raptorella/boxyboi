@@ -1,0 +1,2 @@
+
+1- have the code for the same colored boxes destroy when they hit each other. use event handling.

@@ -79,6 +79,8 @@ void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
+
+
 }
 
 void Game::ComposeFrame()

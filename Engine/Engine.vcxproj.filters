@@ -168,4 +168,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Yonerge.txt" />
+  </ItemGroup>
 </Project>
