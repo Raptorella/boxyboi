@@ -99,6 +99,7 @@ public:
 	{
 		shouldBeDestroyed = b;
 	}
+	std::vector<std::unique_ptr<Box>> Split();
 	~Box()
 	{
 		pBody.reset();

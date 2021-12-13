@@ -1,5 +1,5 @@
 #include "Box.h"
-IndexedTriangleList<Vec2> Box::model;
+IndexedTriangleList<Vec2> Box::model; //TODO: what is this?
 
 
 class RedTrait : public Box::ColorTrait
@@ -77,7 +77,7 @@ std::unique_ptr<Box> Box::Spawn( float size,const Boundaries& bounds,b2World& wo
 	std::uniform_real_distribution<float> angle_dist( -PI,PI );
 	std::uniform_int_distribution<int> type_dist( 0,4 );
 
-	const auto linVel = (Vec2{ 1.0f,0.0f } * Mat2::Rotation( angle_dist( rng ) )) * power_dist( rng );
+	const auto linVel = (Vec2{ 1.9f,0.0f } * Mat2::Rotation( angle_dist( rng ) )) * power_dist( rng );
 	const auto pos = Vec2{ pos_dist( rng ),pos_dist( rng ) };
 	const auto ang = angle_dist( rng );
 	const auto angVel = angle_dist( rng ) * 1.5f;
@@ -103,4 +103,9 @@ std::unique_ptr<Box> Box::Spawn( float size,const Boundaries& bounds,b2World& wo
 	}
 	
 	return std::make_unique<Box>( std::move( pColorTrait ),world,pos,size,ang,linVel,angVel );
+}
+
+std::vector<std::unique_ptr<Box>> Box::Split()
+{
+	return std::vector<std::unique_ptr<Box>>();
 }

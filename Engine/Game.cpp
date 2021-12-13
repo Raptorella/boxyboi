@@ -88,13 +88,19 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
-	for (auto i = boxPtrs.begin(); i < boxPtrs.end(); i++)
-	{
-		if ((*i)->GetShouldBeDestroyed())
-		{
-			i = boxPtrs.erase(i);
-		}
-	}
+	//for (auto i = boxPtrs.begin(); i < boxPtrs.end(); i++)
+	//{
+	//	if ((*i)->GetShouldBeDestroyed())
+	//	{
+	//		i = boxPtrs.erase(i);
+	//	}
+	//}
+
+	boxPtrs.erase(
+		std::remove_if(boxPtrs.begin(), boxPtrs.end(), 
+		[](auto& p) {
+			return p->GetShouldBeDestroyed(); 
+		}),boxPtrs.end());
 }
 
 void Game::ComposeFrame()

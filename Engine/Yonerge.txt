@@ -1,2 +1,11 @@
+﻿
+1- have the code for the same colored boxes destroy when they hit each other. use event handling. DONE
 
-1- have the code for the same colored boxes destroy when they hit each other. use event handling.
+2- unordered map ile hangi renkler carpisirsa hangi eylem olacagina dair bir yapi kur.
+Yani map'in keyinde iki renk olasiligi, diger tarafinda ise bir function pointer olmalı (action muhtemelen)
+ Bu konuda soyle bir durum var, muhtemelen de zorluk oradan gelecek. 2 renk bir araya gelecek, olasilik sayisi eger orn
+ 10 ise, ne oluyo 2^10 mu?? sayi bol oluyor. Bunlarin hepsini enum olarak mi kodlasan acaba. Sey gibi
+ red-blue => 1
+ red-red => 2 vs... cevap: renk sayisi! / karsilasan renk sayisi! (2)  5! / 2 = 60;
+
+ enumlari nasil tanimlayacagiz, elle mi? bu pek hos olmaz.
