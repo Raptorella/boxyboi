@@ -88,10 +88,6 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
-	for (auto& p : boxPtrs)
-	{
-	}
-
 	for (auto i = boxPtrs.begin(); i < boxPtrs.end(); i++)
 	{
 		if ((*i)->GetShouldBeDestroyed())
@@ -99,7 +95,6 @@ void Game::UpdateModel()
 			i = boxPtrs.erase(i);
 		}
 	}
-
 }
 
 void Game::ComposeFrame()
