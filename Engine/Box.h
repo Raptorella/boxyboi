@@ -12,7 +12,7 @@
 #include "Boundaries.h"
 #include <random>
 
-class Box
+class Box 
 {
 public:
 	class ColorTrait
@@ -91,6 +91,18 @@ public:
 	{
 		return *pColorTrait;
 	}
+	bool GetShouldBeDestroyed() const
+	{
+		return shouldBeDestroyed;
+	}
+	void SetShouldBeDestroyed(bool b)
+	{
+		shouldBeDestroyed = b;
+	}
+	~Box()
+	{
+		pBody.reset();
+	}
 private:
 	static void Init()
 	{
@@ -105,4 +117,5 @@ private:
 	float size;
 	BodyPtr pBody;
 	std::unique_ptr<ColorTrait> pColorTrait;
+	bool shouldBeDestroyed = false;
 };

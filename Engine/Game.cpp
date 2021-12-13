@@ -57,6 +57,12 @@ Game::Game( MainWindow& wnd )
 				auto& tid0 = typeid(boxPtrs[0]->GetColorTrait());
 				auto& tid1 = typeid(boxPtrs[1]->GetColorTrait());
 
+				if (tid0.name() == tid1.name())
+				{
+					boxPtrs[0]->SetShouldBeDestroyed(true);
+					boxPtrs[1]->SetShouldBeDestroyed(true);
+				}
+
 				std::stringstream msg;
 				msg << "Collision between " << tid0.name() << " and " << tid1.name() << std::endl;
 				OutputDebugStringA( msg.str().c_str() );
@@ -75,11 +81,24 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
+bool boxesShouldBeDestroyed;
+
 void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
+	for (auto& p : boxPtrs)
+	{
+	}
+
+	for (auto i = boxPtrs.begin(); i < boxPtrs.end(); i++)
+	{
+		if ((*i)->GetShouldBeDestroyed())
+		{
+			i = boxPtrs.erase(i);
+		}
+	}
 
 }
 
