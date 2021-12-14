@@ -111,7 +111,7 @@
     <ClInclude Include="BodyPtr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColorCollisionBehaviourMap.h">
+    <ClInclude Include="PatternMatchingCollisionEventManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -105,7 +105,34 @@ std::unique_ptr<Box> Box::Spawn( float size,const Boundaries& bounds,b2World& wo
 	return std::make_unique<Box>( std::move( pColorTrait ),world,pos,size,ang,linVel,angVel );
 }
 
-std::vector<std::unique_ptr<Box>> Box::Split()
+bool Box::GetShouldSplit()
 {
-	return std::vector<std::unique_ptr<Box>>();
+	return shouldSplit;
+}
+
+void Box::SetShouldSplit(bool b)
+{
+	shouldSplit = b;
+}
+
+std::vector<std::unique_ptr<Box>> Box::Split(b2World& world)
+{
+	float daSize = size;
+	float newSize = daSize / 2;
+	Vec2 posThis = Vec2(pBody->GetPosition());
+	Vec2 posRightUp = posThis + Vec2{daSize/4, daSize/4};
+	Vec2 posLeftUp = posThis + Vec2{ -daSize / 4, daSize / 4 };
+	Vec2 posRightBottom = posThis + Vec2{ daSize / 4, -daSize / 4 };
+	Vec2 posLeftBottom = posThis + Vec2{ -daSize / 4, -daSize / 4 };
+	auto aColorTrait = pColorTrait->Clone();
+	auto bColorTrait = pColorTrait->Clone();
+	auto cColorTrait = pColorTrait->Clone();
+
+
+	std::vector<std::unique_ptr<Box>> boxes;
+	boxes.emplace_back(std::make_unique<Box>(std::move(pColorTrait), world, posRightUp, newSize));
+	boxes.emplace_back(std::make_unique<Box>(std::move(aColorTrait), world, posLeftUp, newSize));
+	boxes.emplace_back(std::make_unique<Box>(std::move(bColorTrait), world, posRightBottom, newSize));
+	boxes.emplace_back(std::make_unique<Box>(std::move(cColorTrait), world, posLeftBottom, newSize));
+	return boxes;
 }

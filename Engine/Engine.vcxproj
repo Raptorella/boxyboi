@@ -142,7 +142,7 @@
     <ClInclude Include="ChiliException.h" />
     <ClInclude Include="ChiliMath.h" />
     <ClInclude Include="ChiliWin.h" />
-    <ClInclude Include="ColorCollisionBehaviourMap.h" />
+    <ClInclude Include="PatternMatchingCollisionEventManager.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="DefaultGeometryShader.h" />

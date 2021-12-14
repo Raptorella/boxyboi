@@ -59,8 +59,10 @@ Game::Game( MainWindow& wnd )
 
 				if (tid0.name() == tid1.name())
 				{
-					boxPtrs[0]->SetShouldBeDestroyed(true);
-					boxPtrs[1]->SetShouldBeDestroyed(true);
+					//boxPtrs[0]->SetShouldBeDestroyed(true);
+					//boxPtrs[1]->SetShouldBeDestroyed(true);
+					boxPtrs[0]->SetShouldSplit(true);
+					boxPtrs[1]->SetShouldSplit(true);
 				}
 
 				std::stringstream msg;
@@ -88,19 +90,27 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
-	//for (auto i = boxPtrs.begin(); i < boxPtrs.end(); i++)
-	//{
-	//	if ((*i)->GetShouldBeDestroyed())
-	//	{
-	//		i = boxPtrs.erase(i);
-	//	}
-	//}
 
 	boxPtrs.erase(
 		std::remove_if(boxPtrs.begin(), boxPtrs.end(), 
 		[](auto& p) {
 			return p->GetShouldBeDestroyed(); 
 		}),boxPtrs.end());
+
+
+	for (int i = 0; i < boxPtrs.size(); i++)
+	{
+		if (boxPtrs[i]->GetShouldSplit())
+		{
+			auto& splitted = boxPtrs[i]->Split(world);
+			boxPtrs.erase(boxPtrs.begin()+i);
+			for (int j = 0; j < splitted.size(); j++)
+			{
+				boxPtrs.push_back(std::move(splitted[j]));
+			}
+		}
+	}
+
 }
 
 void Game::ComposeFrame()

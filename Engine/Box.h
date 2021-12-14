@@ -99,10 +99,12 @@ public:
 	{
 		shouldBeDestroyed = b;
 	}
-	std::vector<std::unique_ptr<Box>> Split();
+	bool GetShouldSplit();
+	void SetShouldSplit(bool b);
+	std::vector<std::unique_ptr<Box>> Split(b2World& world);
 	~Box()
 	{
-		pBody.reset();
+		//pBody.reset();
 	}
 private:
 	static void Init()
@@ -119,4 +121,5 @@ private:
 	BodyPtr pBody;
 	std::unique_ptr<ColorTrait> pColorTrait;
 	bool shouldBeDestroyed = false;
+	bool shouldSplit = false;
 };

@@ -3,7 +3,7 @@
 #include "Box.h"
 #include<unordered_map>
 
-class ColorCollisionBehaviourMap
+class PatternMatchingCollisionEventManager
 {
 public:
 	//void InitMap()
