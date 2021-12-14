@@ -108,6 +108,7 @@ void Game::UpdateModel()
 			{
 				boxPtrs.push_back(std::move(splitted[j]));
 			}
+			break;
 		}
 	}
 
