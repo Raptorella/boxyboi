@@ -120,6 +120,9 @@ std::vector<std::unique_ptr<Box>> Box::Split(b2World& world)
 	float daSize = size;
 	float newSize = daSize / 2;
 	Vec2 posThis = Vec2(pBody->GetPosition());
+	pBody->GetAngle();
+	Vec2 linVel = Vec2(pBody->GetLinearVelocity());
+	float angVel = float(pBody->GetAngularVelocity());
 	Vec2 posRightUp = posThis + Vec2{daSize/4, daSize/4};
 	Vec2 posLeftUp = posThis + Vec2{ -daSize / 4, daSize / 4 };
 	Vec2 posRightBottom = posThis + Vec2{ daSize / 4, -daSize / 4 };
@@ -130,9 +133,9 @@ std::vector<std::unique_ptr<Box>> Box::Split(b2World& world)
 
 
 	std::vector<std::unique_ptr<Box>> boxes;
-	boxes.emplace_back(std::make_unique<Box>(std::move(pColorTrait), world, posRightUp, newSize));
-	boxes.emplace_back(std::make_unique<Box>(std::move(aColorTrait), world, posLeftUp, newSize));
-	boxes.emplace_back(std::make_unique<Box>(std::move(bColorTrait), world, posRightBottom, newSize));
-	boxes.emplace_back(std::make_unique<Box>(std::move(cColorTrait), world, posLeftBottom, newSize));
+	boxes.emplace_back(std::make_unique<Box>(std::move(pColorTrait), world, posRightUp, newSize, 0.0f, linVel,angVel));
+	boxes.emplace_back(std::make_unique<Box>(std::move(aColorTrait), world, posLeftUp, newSize, 0.0f, linVel, angVel));
+	boxes.emplace_back(std::make_unique<Box>(std::move(bColorTrait), world, posRightBottom, newSize, 0.0f, linVel, angVel));
+	boxes.emplace_back(std::make_unique<Box>(std::move(cColorTrait), world, posLeftBottom, newSize, 0.0f, linVel, angVel));
 	return boxes;
 }
