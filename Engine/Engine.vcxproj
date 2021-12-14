@@ -142,6 +142,7 @@
     <ClInclude Include="ChiliException.h" />
     <ClInclude Include="ChiliMath.h" />
     <ClInclude Include="ChiliWin.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="PatternMatchingCollisionEventManager.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Box.h" />

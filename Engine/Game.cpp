@@ -27,6 +27,7 @@
 #include <functional>
 #include <iterator>
 
+
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
@@ -90,6 +91,9 @@ void Game::UpdateModel()
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
+	auto& smt = typeid(boxPtrs[0]->GetColorTrait());
+	std::string str = smt.name();
+	auto result = help.GetPureColorName(str);
 
 	boxPtrs.erase(
 		std::remove_if(boxPtrs.begin(), boxPtrs.end(), 
