@@ -44,15 +44,22 @@ namespace Helper
 			//std::make_unique<char>(new char[sizeFirst + sizeSecond + 2]); //one for null one for dash
 
 		char* cb = combBegin;
-		for (char* b = firstBegin; b < firstEnd; b++, cb++)
+		for (char* b = firstBegin; b <= firstEnd; b++, cb++)
 		{
 			if (b == firstEnd)
 			{
 				*cb = '-';
 				cb++;
-				for (char* sb = secondBegin; cb < combEnd; sb++, cb++)
+				for (char* sb = secondBegin; cb <= combEnd; sb++, cb++)
 				{
-					*cb = *sb;
+					if (cb == combEnd)
+					{
+						*cb = '\0';
+					}
+					else
+					{
+						*cb = *sb;
+					}
 				}
 			}
 			else
