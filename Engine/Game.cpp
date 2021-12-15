@@ -69,6 +69,7 @@ Game::Game( MainWindow& wnd )
 					boxPtrs[0]->SetCollisionHappened(true);
 					boxPtrs[1]->SetCollisionHappened(true);
 					auto first = Helper::GetPureColorName(std::string(tid0.name()));
+					auto second = Helper::GetPureColorName(std::string(tid1.name()));
 					std::string between = "";
 				}
 
@@ -92,6 +93,15 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	//TEST
+
+	char* first = "Yellow";
+	char* second = "Blue";
+
+	auto result = Helper::ConcatenateWithDash(first, second);
+
+	//TEST
+
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
 
