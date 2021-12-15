@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class Helper
+static class Helper
 {
 public:
 	static char* GetPureColorName(std::string& typeIdColorName)

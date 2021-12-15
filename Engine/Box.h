@@ -101,6 +101,14 @@ public:
 	}
 	bool GetShouldSplit();
 	void SetShouldSplit(bool b);
+	bool GetCollisionHappened() const
+	{
+		return collisionHappened;
+	}
+	bool SetCollisionHappened(bool b)
+	{
+		collisionHappened = b;
+	}
 	std::vector<std::unique_ptr<Box>> Split(b2World& world);
 	~Box()
 	{
@@ -122,4 +130,5 @@ private:
 	std::unique_ptr<ColorTrait> pColorTrait;
 	bool shouldBeDestroyed = false;
 	bool shouldSplit = false;
+	bool collisionHappened = false; // TODO: her collision icin bunu kullan listenerda.
 };

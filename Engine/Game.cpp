@@ -26,6 +26,7 @@
 #include <typeinfo>
 #include <functional>
 #include <iterator>
+#include "Helper.h"
 
 
 Game::Game( MainWindow& wnd )
@@ -62,8 +63,13 @@ Game::Game( MainWindow& wnd )
 				{
 					//boxPtrs[0]->SetShouldBeDestroyed(true);
 					//boxPtrs[1]->SetShouldBeDestroyed(true);
-					boxPtrs[0]->SetShouldSplit(true);
-					boxPtrs[1]->SetShouldSplit(true);
+					//boxPtrs[0]->SetShouldSplit(true);
+					//boxPtrs[1]->SetShouldSplit(true);
+
+					boxPtrs[0]->SetCollisionHappened(true);
+					boxPtrs[1]->SetCollisionHappened(true);
+					auto first = Helper.GetPureColorName(std::string(tid0.name()));
+					std::string between = "";
 				}
 
 				std::stringstream msg;
@@ -84,16 +90,10 @@ void Game::Go()
 	gfx.EndFrame();
 }
 
-bool boxesShouldBeDestroyed;
-
 void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 	world.Step( dt,8,3 );
-
-	auto& smt = typeid(boxPtrs[0]->GetColorTrait());
-	std::string str = smt.name();
-	auto result = help.GetPureColorName(str);
 
 	boxPtrs.erase(
 		std::remove_if(boxPtrs.begin(), boxPtrs.end(), 
