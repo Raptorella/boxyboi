@@ -105,7 +105,7 @@ public:
 	{
 		return collisionHappened;
 	}
-	bool SetCollisionHappened(bool b)
+	void SetCollisionHappened(bool b)
 	{
 		collisionHappened = b;
 	}

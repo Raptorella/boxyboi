@@ -1,10 +1,9 @@
 #pragma once
 #include <string>
 
-static class Helper
+namespace Helper
 {
-public:
-	static char* GetPureColorName(std::string& typeIdColorName)
+	char* GetPureColorName(std::string& typeIdColorName)
 	{
 		char* beginPtr = &typeIdColorName[0];
 		char* endPtr = beginPtr + typeIdColorName.length() ;

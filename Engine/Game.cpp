@@ -68,7 +68,7 @@ Game::Game( MainWindow& wnd )
 
 					boxPtrs[0]->SetCollisionHappened(true);
 					boxPtrs[1]->SetCollisionHappened(true);
-					auto first = Helper.GetPureColorName(std::string(tid0.name()));
+					auto first = Helper::GetPureColorName(std::string(tid0.name()));
 					std::string between = "";
 				}
 
